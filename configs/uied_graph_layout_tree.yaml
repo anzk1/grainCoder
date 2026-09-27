@@ -1,0 +1,106 @@
+mask:
+  minimum_gap: 8
+  minimum_region_size: 10
+  minimum_split_score: 0.45
+  strong_separator_score: 0.9
+  second_pass_min_foreground_elements: 8
+  large_component_area_ratio: 0.07
+
+separator:
+  minimum_span_ratio: 0.50
+
+region_policies:
+  hero:
+    no_split_bias: 0.40
+    minimum_split_score: 0.95
+    large_component_cut_penalty: 0.80
+    text_fragment_penalty: 0.40
+    preferred_directions: []
+  navigation:
+    no_split_bias: 0.35
+    minimum_split_score: 0.90
+    text_fragment_penalty: 0.45
+    preferred_directions: [vertical]
+  text_section:
+    no_split_bias: 0.35
+    minimum_split_score: 0.85
+    large_component_cut_penalty: 0.80
+    layout_group_bonus: 0.10
+    text_fragment_penalty: 0.60
+    preferred_directions: []
+  card_grid:
+    no_split_bias: 0.05
+    minimum_split_score: 0.60
+    layout_group_bonus: 0.45
+    repeated_unit_bonus: 0.40
+    broken_layout_group_penalty: 0.80
+    preferred_directions: [horizontal, vertical]
+  two_column:
+    no_split_bias: 0.05
+    minimum_split_score: 0.60
+    large_component_cut_penalty: 0.80
+    layout_group_bonus: 0.15
+    preferred_direction_bonus: 0.50
+    preferred_directions: [vertical]
+  list:
+    no_split_bias: 0.20
+    minimum_split_score: 0.75
+    repeated_unit_bonus: 0.25
+    broken_layout_group_penalty: 0.80
+    preferred_directions: [horizontal]
+  footer:
+    no_split_bias: 0.25
+    minimum_split_score: 0.75
+    text_fragment_penalty: 0.40
+    preferred_directions: [vertical]
+  mixed:
+    no_split_bias: 0.10
+    minimum_split_score: 0.45
+    layout_group_bonus: 0.15
+    broken_layout_group_penalty: 0.80
+    preferred_directions: [horizontal, vertical]
+
+tree_search:
+  beam_width: 10
+  max_split_candidates_per_region: 3
+  max_expansions: 64
+  max_depth: 7
+  partial_local_score_weight: 0.10
+
+tree_score:
+  separator_evidence: 0.20
+  semantic_cohesion: 0.25
+  layout_group_preservation: 0.20
+  repeated_unit_preservation: 0.12
+  direction_consistency: 0.08
+  background_boundary_alignment: 0.10
+  visual_partition_score: 0.10
+  empty_region_penalty: 0.45
+  thin_text_atomic_penalty: 0.25
+  single_small_element_penalty: 0.15
+  broken_large_component_penalty: 0.40
+  under_segmentation_penalty: 0.40
+  generation_cost_penalty: 0.08
+
+quality_gate:
+  mixed_atomic_element_ratio: 0.75
+  thin_text_atomic_ratio: 0.40
+  small_single_element_ratio: 0.45
+  broken_layout_group_ratio: 0.10
+  large_component_cut_ratio: 0.10
+  region_type_mismatch_ratio: 0.10
+
+ownership:
+  icon_max_size: 48
+
+renderer:
+  atomic_overflow_tolerance_px: 4
+
+generation:
+  model: gpt-5.4
+  temperature: 0.2
+  seed: 42
+  num_leaf_generations: 2
+
+reference:
+  layoutcoder_commit: bf5b0032923ea68a0aff9f98fa9cd544d8cd9ee8

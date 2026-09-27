@@ -1,0 +1,12 @@
+__pycache__/
+*.log
+.DS_Store
+*.key
+.env
+.env.*
+credentials.json
+keys/gptkey.txt
+
+.trellis/
+.codex/
+.agents/

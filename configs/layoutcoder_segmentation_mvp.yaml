@@ -1,0 +1,32 @@
+segmenter:
+  name: layoutcoder_mvp
+  max_depth: 2
+  max_leaves: 20
+  min_gap_px: 8
+  min_child_width_px: 24
+  min_child_height_px: 16
+  equal_gap_axis_priority: y
+
+overlap:
+  containment_threshold: 0.95
+  duplicate_iou_threshold: 0.90
+
+generation:
+  model: gpt-5.4
+  temperature: 0.2
+  seed: 42
+  num_leaf_generations: 2
+  use_structure_context: false
+  save_raw: true
+  save_final: true
+
+baseline:
+  max_depth: 2
+  var_thresh: 50
+  diff_thresh: 45
+  diff_portion: 0.9
+  window_size: 50
+
+reference:
+  layoutcoder_commit: bf5b0032923ea68a0aff9f98fa9cd544d8cd9ee8
+  requirements_file: requirements-layoutcoder-mvp.txt
